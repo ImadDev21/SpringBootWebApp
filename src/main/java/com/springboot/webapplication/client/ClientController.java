@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/")
+//@RequestMapping(value = "/login")
 public class ClientController {
 	private final ClientService clientservice;
 	
@@ -36,17 +36,17 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/delete")
-	public String delete() {
-		return clientservice.delete();
+	public String delete(Long id) {
+		return clientservice.delete(id);
 	}
 	
 	@RequestMapping("/update")
-	public String update() {
-		return clientservice.update();
+	public String update(Long id, String email) {
+		return clientservice.update(id, email);
 	}
 	
-	/*@RequestMapping(value = "/home")
-	public void affiche(Model model) {	
+	/*@RequestMapping("/login")
+	public void affiche() {	
 	}*/
 	
 }

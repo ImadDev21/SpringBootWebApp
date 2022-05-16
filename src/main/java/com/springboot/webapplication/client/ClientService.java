@@ -33,9 +33,9 @@ public class ClientService{
 		return "Client is "+client.getNom();
 	}
 	
-	public String delete() {
+	public String delete(Long id) {
 		try {
-			Client client = new Client(5l);
+			Client client = new Client(id);
 			userDao.delete(client);
 		} catch(Exception ex) {
 			return "Error precess D failed";
@@ -45,10 +45,10 @@ public class ClientService{
 	
 	
 
-	public String update() {
+	public String update(Long id, String email) {
 		try {
-		Client client = userDao.getById(5l);
-		client.setEmail("yourgmail@gmail.com");
+		Client client = userDao.getById(id);
+		client.setEmail(email);
 		userDao.save(client);
 		} catch (Exception ex) {
 			return "Error process UP failed";

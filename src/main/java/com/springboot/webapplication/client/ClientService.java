@@ -33,9 +33,9 @@ public class ClientService{
 		return "Client is "+client.getNom();
 	}
 	
-	public String delete() {
+	public String delete(long id) {
 		try {
-			Client client = new Client(5l);
+			Client client = new Client(id);
 			userDao.delete(client);
 		} catch(Exception ex) {
 			return "Error precess D failed";
@@ -45,9 +45,9 @@ public class ClientService{
 	
 	
 
-	public String update() {
+	public String update(long id) {
 		try {
-		Client client = userDao.getById(5l);
+		Client client = userDao.getById(id);
 		client.setEmail("yourgmail@gmail.com");
 		userDao.save(client);
 		} catch (Exception ex) {

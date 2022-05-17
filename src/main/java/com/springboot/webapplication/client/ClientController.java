@@ -36,13 +36,13 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/delete")
-	public String delete() {
-		return clientservice.delete();
+	public String delete(long id) {
+		return clientservice.delete(id);
 	}
 	
 	@RequestMapping("/update")
-	public String update() {
-		return clientservice.update();
+	public String update(long id) {
+		return clientservice.update(id);
 	}
 	
 	/*@RequestMapping(value = "/home")

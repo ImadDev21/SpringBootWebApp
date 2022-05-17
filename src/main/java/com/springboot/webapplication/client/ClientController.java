@@ -36,7 +36,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/delete")
-	public String delete(Long id) {
+	public String delete(long id) {
 		return clientservice.delete(id);
 	}
 	
@@ -44,7 +44,6 @@ public class ClientController {
 	public String update(Long id, String email) {
 		return clientservice.update(id, email);
 	}
-	
 	/*@RequestMapping("/login")
 	public void affiche() {	
 	}*/

@@ -25,31 +25,34 @@ public class ClientService{
 	public String create(Client client) {
 		
 		try {
-			client = new Client("mohh", "adbhg", "ggggu@gmail.com", 22, LocalDate.of(2000, Month.MARCH, 5));
-			userDao.save(client);
+			// we will add an email control later (email must be unique)
+			userDao.save(new Client("Mohamed", "Fathi", "fathi@gmail.com", 22, LocalDate.of(2000, Month.MARCH, 5)));
 		} catch (Exception ex) {
 			return "Client not found";
 		}
-		return "Client is "+client.getNom();
+		return client.getNom() + " account is succesfully created";
 	}
 	
 	public String delete(Long id) {
 		try {
-			Client client = new Client(id);
+			// if we delete a client it must be redirected to home page (like logout)--add it later
+			Client client = userDao.getById(id);
 			userDao.delete(client);
 		} catch(Exception ex) {
 			return "Error precess D failed";
 		}
 		return "Client succesfully deleted";
-	}
-	
-	
+	}		
 
 	public String update(Long id, String email) {
 		try {
 		Client client = userDao.getById(id);
-		client.setEmail(email);
-		userDao.save(client);
+		// if the new email is not match the old one then we update it else we have an ERROR
+		if (!(client.getEmail().equals(email)) ) {
+			client.setEmail(email);
+			userDao.save(client);
+		}
+		else return "New email matches the old one";
 		} catch (Exception ex) {
 			return "Error process UP failed";
 		}

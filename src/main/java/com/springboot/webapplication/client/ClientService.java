@@ -23,14 +23,17 @@ public class ClientService{
 	}
 	
 	public String create(Client client) {
-		
+
+		Client c1;
 		try {
 			// we will add an email control later (email must be unique)
-			userDao.save(new Client("Mohamed", "Fathi", "fathi@gmail.com", 22, LocalDate.of(2000, Month.MARCH, 5)));
+			c1 = new Client("Mohamed", "Fathi", "fathi@gmail.com",
+					22, LocalDate.of(2000, Month.MARCH, 5));
+			userDao.save(c1);
 		} catch (Exception ex) {
 			return "Client not found";
 		}
-		return client.getNom() + " account is succesfully created";
+		return c1.getNom() + " account is succesfully created";
 	}
 	
 	public String delete(Long id) {

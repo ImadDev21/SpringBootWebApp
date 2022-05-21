@@ -41,8 +41,8 @@ public class ClientController{
 	}
 	
 	@RequestMapping("/create")
-	public String create(Client client) {
-		return clientservice.create(client);
+	public String create(String email, String id) {
+		return clientservice.create(email, id);
 	}
 	
 	@RequestMapping("/delete")
@@ -51,7 +51,7 @@ public class ClientController{
 	}
 	
 	@RequestMapping("/update")
-	public String update(Long id, String email) {
+	public String update(long id, String email) {
 		return clientservice.update(id, email);
 	}
 

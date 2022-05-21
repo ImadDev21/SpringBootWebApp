@@ -24,11 +24,11 @@ public class ClientService{
 		return userDao.findAll();
 	}
 	
-	public String create(Client client) {
-		
+	public String create(String email, String id) {
+		Client client;
 		try {
 			// we will add an email control later (email must be unique)
-			client = new Client("Mohamed", "Fathi", "fathi@gmail.com", 22, LocalDate.of(2000, Month.MARCH, 5));
+			client = new Client("Mohamed", "Fathi", email, Integer.parseInt(id), LocalDate.of(2000, Month.MARCH, 5));
 			userDao.save(client);
 		} catch (Exception ex) {
 			return "Client not found";
@@ -36,7 +36,7 @@ public class ClientService{
 		return client.getNom() + " account is succesfully created";
 	}
 	
-	public String delete(Long id) {
+	public String delete(long id) {
 		try {
 			// if we delete a client it must be redirected to home page (like logout)--add it later
 			Client client = userDao.getById(id);
@@ -47,7 +47,7 @@ public class ClientService{
 		return "Client succesfully deleted";
 	}		
 
-	public String update(Long id, String email) {
+	public String update(long id, String email) {
 		try {
 		Client client = userDao.getById(id);
 		// if the new email is not match the old one then we update it else we have an ERROR

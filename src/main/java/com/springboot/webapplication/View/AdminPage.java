@@ -32,8 +32,7 @@ public class AdminPage extends VerticalLayout{
     TextField filtertext = new TextField();
     Button update = new Button("Update");
     Button delete = new Button("Delete");
-
-
+    Button Add = new Button("ADD Client");
 
     public AdminPage(ClientController control){
         this.control = control;
@@ -42,7 +41,7 @@ public class AdminPage extends VerticalLayout{
         configureGrid();
         update.addClickListener(e -> updateClients());
         delete.addClickListener(e -> deleteClients());
-
+        Add.addClickListener(e -> addClients());
         add(getToolbar(), getContent());
         listClients();
     }
@@ -62,17 +61,19 @@ public class AdminPage extends VerticalLayout{
     }
 
     private void updateClients (){
-        Notification nt = Notification.show(control.update(Long.parseLong(ID.getValue()), EMAIL.getValue().toString()));
+        Notification nt = Notification.show(control.update(Long.parseLong(ID.getValue()), EMAIL.getValue()));
     }
 
     private void deleteClients (){
         Notification nt = Notification.show(control.delete(Long.parseLong(ID.getValue())));
     }
+
+    private void addClients (){
+        Notification nt = Notification.show(control.create(EMAIL.getValue(), ID.getValue()));
+    }
     private Component createButtonLayout() {
         update.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
-
-        update.addClickShortcut(Key.ENTER);
 
         return new HorizontalLayout(update, delete);
     }
@@ -82,7 +83,7 @@ public class AdminPage extends VerticalLayout{
         filtertext.setClearButtonVisible(true);
         filtertext.setValueChangeMode(ValueChangeMode.LAZY);
 
-        Button Add = new Button("ADD Client");
+
         HorizontalLayout toolbar = new HorizontalLayout(filtertext, Add);
         return toolbar;
     }

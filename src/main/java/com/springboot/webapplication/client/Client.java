@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
-
 @Entity
 @Table(name = "clients")
 public class Client {
@@ -43,6 +42,11 @@ public class Client {
 		this.email = email;
 		this.age = age;
 		Date_naissance = date_naissance;
+	}
+
+	public Client (String nom, String prenom){
+		this.nom = nom;
+		this.prenom = prenom;
 	}
 	
 	public Client (Long id) {

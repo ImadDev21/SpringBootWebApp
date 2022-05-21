@@ -5,8 +5,10 @@ import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //@Component
 @Service
@@ -26,7 +28,8 @@ public class ClientService{
 		
 		try {
 			// we will add an email control later (email must be unique)
-			userDao.save(new Client("Mohamed", "Fathi", "fathi@gmail.com", 22, LocalDate.of(2000, Month.MARCH, 5)));
+			client = new Client("Mohamed", "Fathi", "fathi@gmail.com", 22, LocalDate.of(2000, Month.MARCH, 5));
+			userDao.save(client);
 		} catch (Exception ex) {
 			return "Client not found";
 		}
@@ -58,4 +61,12 @@ public class ClientService{
 		}
 		return "Client succesfully updated";
 	}
+
+	/*boolean search(@Param("Username") String username, @Param("Password") String password){
+		Client client = new Client(username, password);
+		return userDao.existsById(client.getId());
+	}*/
+
+
+
 }

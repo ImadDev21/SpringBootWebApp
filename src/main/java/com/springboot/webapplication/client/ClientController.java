@@ -1,10 +1,15 @@
 package com.springboot.webapplication.client;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +18,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
-//@RequestMapping(value = "/login")
-public class ClientController {
+//@RequestMapping(value = "/")
+public class ClientController{
 	private final ClientService clientservice;
 	
 	
@@ -44,8 +54,5 @@ public class ClientController {
 	public String update(Long id, String email) {
 		return clientservice.update(id, email);
 	}
-	/*@RequestMapping("/login")
-	public void affiche() {	
-	}*/
-	
+
 }

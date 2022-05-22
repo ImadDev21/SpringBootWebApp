@@ -6,6 +6,7 @@ import jdk.jfr.Timestamp;
 import org.hibernate.cfg.annotations.reflection.internal.XMLContext;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,20 +26,27 @@ public class Author {
 
     private LocalDateTime dateOfBirth;
 
-    @Temporal(TemporalType.TIMESTAMP)
-   // @GeneratedValue(generator = )"
+   // @Temporal(TemporalType.TIMESTAMP)
+    //@GeneratedValue(strategy = )
     private LocalDateTime regestrationDate;
 
     private String aboutme;
 
+    @Email
     private String email;
+
+    private String password;
 
     private String phoneNumber;
 
     private Image authorImage;
 
-    public Author(String benahmed, String mohamed, LocalDate of, String aboutme, String email, String phoneNumber) {
 
+    public Author(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     /*this is the used one*/

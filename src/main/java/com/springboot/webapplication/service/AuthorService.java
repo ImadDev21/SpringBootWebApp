@@ -23,22 +23,14 @@ public class AuthorService {
 
     public String createAuthor(Author author)
     {
-
         Author author1;
-                try{ author1= new Author( "benahmed",
-                        "mohamed",
-                        LocalDate.of(2000, Month.MARCH, 5),
-                        "iam a new author i love writing about anything",
-                        "email.me@gmail.com",
-                        "0525288728"
-                );
-
-                    authorDao.save(author1);
+                try{
+                    authorDao.save(author);
 
                 }catch (Exception e){
                     return "Client not found";
                 }
-                return author1.getId()+ author.getFullName()+" Has been created succefylly ";
+                return author.getId()+ author.getFullName()+" Has been created succefylly ";
     }
 
 }

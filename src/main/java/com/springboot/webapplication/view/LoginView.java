@@ -12,11 +12,11 @@ import com.vaadin.flow.router.Route;
 @Route("login")
 
 @PageTitle("Login | Vaadin CRM")
-public class LoginView extends VerticalLayout implements BeforeEnterObserver {
+public class LoginView extends VerticalLayout /*implements BeforeEnterObserver */{
 
     private final LoginForm login = new LoginForm();
 
-    CreateAuthorView createAuthorView = new CreateAuthorView();
+   // CreateAuthorView createAuthorView = new CreateAuthorView();
 
 
 
@@ -36,17 +36,17 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         add(new H1("Vaadin CRM"), login);
     }
 
-    @Override
-    public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
-        // inform the user about an authentication error
-        if(beforeEnterEvent.getLocation()
-
-
-                .getQueryParameters()
-                .getParameters()
-                .containsKey("error")) {
-            login.setError(false);
-            beforeEnterEvent.forwardTo(CreateAuthorView.class);
-        }
-    }
+//    @Override
+//    public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
+//        // inform the user about an authentication error
+////        if(beforeEnterEvent.getLocation()
+////
+//////
+//////                .getQueryParameters()
+////                .getParameters()
+////                .containsKey("error")) {
+////            login.setError(false);
+////            beforeEnterEvent.forwardTo(CreateAuthorView.class);
+////        }
+//    }
 }
